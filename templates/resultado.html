@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resultado</title>
+</head>
+<body>
+    <h1>Resultado da Consulta</h1>
+    {% for dados_cep in dados_ceps %}
+        <h3>{{ dados_cep.get('logradouro') }}, {{ dados_cep.get('localidade') }} - {{ dados_cep.get('uf') }}</h3>
+        <p>CEP: {{ dados_cep.get('cep') }}</p>
+        <p>Bairro: {{ dados_cep.get('bairro') }}</p>
+        <p>Latitude: {{ dados_cep.get('lat') }}</p>
+        <p>Longitude: {{ dados_cep.get('lon') }}</p>
+        <hr>
+    {% endfor %}
+</body>
+</html>

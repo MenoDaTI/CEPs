@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consulta de CEPs</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Consulta de CEPs</h1>
+        <form method="post" class="cep-form">
+            <label for="cep1">CEP 1:</label>
+            <input type="text" name="cep" id="cep1" required>
+
+            <label for="cep2">CEP 2:</label>
+            <input type="text" name="cep" id="cep2" required>
+
+            <label for="cep3">CEP 3:</label>
+            <input type="text" name="cep" id="cep3" required>
+
+            <label for="cep4">CEP 4:</label>
+            <input type="text" name="cep" id="cep4" required>
+
+            <label for="cep5">CEP 5:</label>
+            <input type="text" name="cep" id="cep5" required>
+
+            <button type="submit">Consultar</button>
+        </form>
+
+        {% if result %}
+            <h2>Resultados:</h2>
+            <ul class="result-list">
+                {% for data in result %}
+                    <li class="result-item">
+                        <strong>CEP:</strong> {{ data.cep }}<br>
+                        <strong>Logradouro:</strong> {{ data.logradouro }}<br>
+                        <strong>Bairro:</strong> {{ data.bairro }}<br>
+                        <strong>Cidade:</strong> {{ data.localidade }}<br>
+                        <strong>Estado:</strong> {{ data.uf }}<br>
+                    </li>
+                {% endfor %}
+            </ul>
+            <a href="{{ url_for('index') }}" class="back-button">Voltar</a>
+        {% endif %}
+    </div>
+</body>
+</html>
